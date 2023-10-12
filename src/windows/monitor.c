@@ -34,8 +34,8 @@ int winapi processMonitorsCallback(void *_, void *__, winRect *rect, int64_t ___
 		monitors = realloc(monitors, monitors_count * sizeof(*monitors));
 	}
 
-	monitors[monitors_count-1].y = rect->bottom;
 	monitors[monitors_count-1].x = rect->left;
+	monitors[monitors_count-1].y = rect->bottom;
 	monitors[monitors_count-1].width = rect->right - rect->left;
 	monitors[monitors_count-1].height = rect->top - rect->bottom;
 

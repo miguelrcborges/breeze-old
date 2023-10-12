@@ -13,7 +13,7 @@ struct Monitor {
 	short x, y;
 };
 
-PREFIX unsigned int monitors_count;
+PREFIX int monitors_count;
 PREFIX Monitor *monitors;
 
 extern void processMonitors();

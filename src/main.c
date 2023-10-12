@@ -3,6 +3,8 @@
 
 #include "monitor.h"
 
+void initShell(void);
+
 #ifdef _WIN32
 int __stdcall WinMain(
 	void *hInstance,
@@ -11,18 +13,23 @@ int __stdcall WinMain(
 	int nShowCmd
 ) {
 #else
+#include <X11/Xlib.h>
+#include <x11_globals.h>
+
 int main() {
 #endif
+
+	initShell();
 
 	char buffer[1024];
 	int cursor = 0;
 
 	processMonitors();
 
-	sprintf(buffer, "%d Mointor(s)\n", monitors_count);
-	// for (size_t i = 0; i < monitors_count; i += 1) {
-	// 	sprintf(buffer, "Monitor %zu: %dx%d @ %dx%d.\n", i, monitors[i].width, monitors[i].height, monitors[i].x, monitors[i].y);
-	// }
+	cursor += sprintf(buffer + cursor, "%d Monitor(s)\n", monitors_count);
+	for (int i = 0; i < monitors_count; i += 1) {
+		cursor += sprintf(buffer + cursor, "Monitor %d: %dx%d @ %dx%d.\n", i, monitors[i].width, monitors[i].height, monitors[i].x, monitors[i].y);
+	}
 	puts(buffer);
 
 
