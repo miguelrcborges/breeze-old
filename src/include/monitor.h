@@ -16,6 +16,6 @@ struct Monitor {
 PREFIX int monitors_count;
 PREFIX Monitor *monitors;
 
-extern void processMonitors();
+extern void processMonitors(void);
 
 #endif /* MONITOR_H */
