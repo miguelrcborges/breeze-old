@@ -1,8 +1,3 @@
-/**
- * Header dependencies:
- * - windows.h.
- */
-
 #ifndef MONITOR_H
 #define MONITOR_H
 
@@ -14,7 +9,8 @@
 
 typedef struct Monitor Monitor;
 struct Monitor {
-	RECT rect;
+	short width, height;
+	short x, y;
 };
 
 PREFIX unsigned int monitors_count;
