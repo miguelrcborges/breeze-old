@@ -8,5 +8,6 @@
 #endif
 
 PREFIX Display *display;
+PREFIX Window root_window, wm_window;
 
 #endif /* X11_GLOBALS_H */
