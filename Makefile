@@ -1,6 +1,6 @@
 CC ?= clang
 
-CFLAGS ?= -Og -Wall -Wextra -pedantic -Wno-unused-parameter
+CFLAGS ?= -Og -Wall -Wextra -pedantic
 CFLAGS += -Isrc/include
 LINKS_X11 = -lX11 
 LINKS_WINDOWS = -luser32

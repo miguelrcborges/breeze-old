@@ -4,8 +4,9 @@
 
 #include "monitor.h"
 
-typedef struct winRect 
-{
+#define UNUSED(x) (void)(x)
+
+typedef struct winRect {
     long left;
     long top;
     long right;
@@ -26,6 +27,10 @@ void processMonitors(void) {
 
 
 int winapi processMonitorsCallback(void *_, void *__, winRect *rect, int64_t ___) {
+	UNUSED(_);
+	UNUSED(__);
+	UNUSED(___);
+
 	monitors_count += 1;
 
 	if (monitors == NULL) {
