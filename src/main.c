@@ -5,6 +5,8 @@
 
 #include "monitor.h"
 
+#define UNUSED(x) (void)(x)
+
 char *initShell(void);
 static void printUsage(FILE *f);
 
@@ -15,12 +17,25 @@ int __stdcall WinMain(
 	char *lpCmdLine,
 	int nShowCmd
 ) {
+	UNUSED(hInstance);
+	UNUSED(pInstance);
+	UNUSED(lpCmdLine);
+	UNUSED(nShowCmd);
+
+	if (strlen(lpCmdLine) != 0) {
+		if (strcmp(lpCmdLine, "-h") == 0) {
+			printUsage(stdout);
+			return 0;
+		}
+		printUsage(stdout);
+		return 1;
+	}
+
 #else
 #include <X11/Xlib.h>
 #include <x11_globals.h>
 
 int main(int argc, char **argv) {
-#endif
 
 	if (argc == 2) {
 		if (strcmp(argv[1], "-h") == 0) {
@@ -34,6 +49,7 @@ int main(int argc, char **argv) {
 		printUsage(stderr);
 		return 1;
 	}
+#endif
 
 	char *err = initShell();
 	if (err != NULL) {
