@@ -1,6 +1,6 @@
 CC ?= clang
 
-CFLAGS ?= -Og -Wall -Wextra -pedantic
+CFLAGS ?= -Og -Wall -Wextra -pedantic -fsanitize-trap -fsanitize=unreachable
 CFLAGS += -Isrc/include
 LINKS_X11 = -lX11 
 LINKS_WINDOWS = -luser32

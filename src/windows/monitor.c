@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include "wincomdefs.h"
 
+#include "macros.h"
 #include "monitor.h"
 
 #define UNUSED(x) (void)(x)
@@ -27,9 +28,9 @@ void processMonitors(void) {
 
 
 int winapi processMonitorsCallback(void *_, void *__, winRect *rect, int64_t ___) {
-	UNUSED(_);
-	UNUSED(__);
-	UNUSED(___);
+	unused(_);
+	unused(__);
+	unused(___);
 
 	monitors_count += 1;
 

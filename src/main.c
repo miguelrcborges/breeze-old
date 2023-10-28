@@ -4,8 +4,7 @@
 #include <string.h>
 
 #include "monitor.h"
-
-#define UNUSED(x) (void)(x)
+#include "macros.h"
 
 char *initShell(void);
 static void printUsage(FILE *f);
@@ -17,10 +16,10 @@ int __stdcall WinMain(
 	char *lpCmdLine,
 	int nShowCmd
 ) {
-	UNUSED(hInstance);
-	UNUSED(pInstance);
-	UNUSED(lpCmdLine);
-	UNUSED(nShowCmd);
+	unused(hInstance);
+	unused(pInstance);
+	unused(lpCmdLine);
+	unused(nShowCmd);
 
 	if (strlen(lpCmdLine) != 0) {
 		if (strcmp(lpCmdLine, "-h") == 0) {
