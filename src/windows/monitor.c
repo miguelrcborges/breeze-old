@@ -1,11 +1,9 @@
 #include <stdlib.h>
 #include <stdint.h>
-#include "wincomdefs.h"
+#include "win_comdefs.h"
 
 #include "macros.h"
 #include "monitor.h"
-
-#define UNUSED(x) (void)(x)
 
 typedef struct winRect {
     long left;
@@ -23,7 +21,7 @@ void processMonitors(void) {
 		monitors = NULL;
 	}
 
-	EnumDisplayMonitors(NULL, NULL, processMonitorsCallback, 0);
+	EnumDisplayMonitors(NULL, NULL, (void *)processMonitorsCallback, 0);
 }
 
 

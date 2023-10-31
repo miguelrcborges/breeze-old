@@ -10,9 +10,12 @@ char *initShell(void);
 static void printUsage(FILE *f);
 
 #ifdef _WIN32
-int __stdcall WinMain(
-	void *hInstance,
-	void *pInstance,
+#include "win_comdefs.h"
+#include "win_globals.h"
+
+int winapi WinMain(
+	handle hInstance,
+	handle pInstance,
 	char *lpCmdLine,
 	int nShowCmd
 ) {
@@ -30,6 +33,7 @@ int __stdcall WinMain(
 		return 1;
 	}
 
+	mainInstance = hInstance;
 #else
 #include <X11/Xlib.h>
 #include <x11_globals.h>
