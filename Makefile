@@ -5,9 +5,9 @@ CFLAGS += -Isrc/include
 LINKS_X11 = -lX11 
 LINKS_WINDOWS = -luser32
 
-SRC = src/main.c $(shell find src/common -type f) 
-SRC_X11 = $(SRC) $(shell find src/x11 -type f)
-SRC_WIN = $(SRC) $(shell find src/windows -type f)
+SRC_COM = $(shell find src/common -type f) 
+SRC_X11 = $(SRC_COM) $(shell find src/x11 -type f)
+SRC_WIN = $(SRC_COM) $(shell find src/windows -type f)
 
 
 ifdef NO_XINERAMA

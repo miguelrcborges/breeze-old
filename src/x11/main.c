@@ -2,44 +2,16 @@
 #define MAIN
 #include <stdio.h>
 #include <string.h>
+#include <X11/Xlib.h>
+#include <x11_globals.h>
 
 #include "monitor.h"
-#include "macros.h"
 
 char *initShell(void);
 static void printUsage(FILE *f);
 
-#ifdef _WIN32
-#include "win_comdefs.h"
-#include "win_globals.h"
-
-int winapi WinMain(
-	handle hInstance,
-	handle pInstance,
-	char *lpCmdLine,
-	int nShowCmd
-) {
-	unused(hInstance);
-	unused(pInstance);
-	unused(lpCmdLine);
-	unused(nShowCmd);
-
-	if (strlen(lpCmdLine) != 0) {
-		if (strcmp(lpCmdLine, "-h") == 0) {
-			printUsage(stdout);
-			return 0;
-		}
-		printUsage(stdout);
-		return 1;
-	}
-
-	mainInstance = hInstance;
-#else
-#include <X11/Xlib.h>
-#include <x11_globals.h>
 
 int main(int argc, char **argv) {
-
 	if (argc == 2) {
 		if (strcmp(argv[1], "-h") == 0) {
 			printUsage(stdout);
@@ -52,7 +24,6 @@ int main(int argc, char **argv) {
 		printUsage(stderr);
 		return 1;
 	}
-#endif
 
 	char *err = initShell();
 	if (err != NULL) {
@@ -75,7 +46,7 @@ int main(int argc, char **argv) {
 }
 
 void printUsage(FILE *f) {
-	fputs("breeze v" VERSION " - Cross Platform Shell\n"
+	fputs("breeze\n"
 	      "Usage: \n"
 	      "\tbreeze [OPTION]\n"
 	      "\n"
