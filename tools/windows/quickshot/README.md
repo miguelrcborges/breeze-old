@@ -6,7 +6,7 @@ Can support older versions if buffered paint is dropped.
 
 
 ## Downloads
-- [x86_64 mingw ucrt](https://files.catbox.moe/t4gdqi.zip)
-- [x86 mingw mvscrt](https://files.catbox.moe/9qy3dh.zip)
+- [x86_64 mingw ucrt](https://files.catbox.moe/6kgfqw.zip)
+- [x86 mingw mvscrt](https://files.catbox.moe/jr62uy.zip)
 
 Note: UCRT versions only work in Windows versions from 8.1.
