@@ -1,5 +1,4 @@
-# LINKS="-lgdi32 -luxtheme -lmsimg32 -mwindows"
-LINKS="-lgdi32 -luxtheme -lmsimg32"
+LINKS="-lgdi32 -luxtheme -lmsimg32 -mwindows"
 BIN="quickshot.exe"
 
 if [ -z "$CC" ]
