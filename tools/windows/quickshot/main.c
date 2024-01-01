@@ -90,6 +90,10 @@ int CALLBACK WinMain(
 	};
 	RegisterClassExA(&quickshotClass);
 
+#ifdef SLEEP
+	Sleep(100);
+#endif
+
 	HWND Window = CreateWindowEx(
 		0,
 		className,
@@ -137,11 +141,15 @@ static LRESULT CALLBACK WindowProc(HWND Window, UINT Message, WPARAM WParam, LPA
 		__builtin_printf("paint called\n");
 #endif
 		PAINTSTRUCT Paint;
+#ifndef UNBUFFERED_PAINT
 		HDC UnbufferedContext = BeginPaint(Window, &Paint);
 		HDC Context;
 		HPAINTBUFFER BufferedPaint = BeginBufferedPaint(UnbufferedContext, &Paint.rcPaint, BPBF_COMPATIBLEBITMAP, NULL, &Context);
 
 		if (!BufferedPaint) goto giveup;
+#else
+		HDC Context = BeginPaint(Window, &Paint);
+#endif
 		BitBlt(Context, 0, 0, screenWidth, screenHeight, DarkenBitmapMemory, 0, 0, SRCCOPY);
 
 		if (selecting) {
@@ -154,8 +162,10 @@ static LRESULT CALLBACK WindowProc(HWND Window, UINT Message, WPARAM WParam, LPA
 			BitBlt(Context, lowerX, lowerY, width, height, BitmapMemory, lowerX, lowerY, SRCCOPY);
 		} 
 end:
+#ifndef UNBUFFERED_PAINT
 		EndBufferedPaint(BufferedPaint, TRUE);
 giveup:
+#endif
 		EndPaint(Window, &Paint);
 		break;
 	}
